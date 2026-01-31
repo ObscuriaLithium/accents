@@ -1,0 +1,60 @@
+plugins {
+    id 'multiloader-loader'
+    id 'fabric-loom'
+    id 'dev.obscuria.hekate'
+}
+
+dependencies {
+    // Minecraft
+    minecraft "com.mojang:minecraft:${minecraft_version}"
+    mappings loom.layered {
+        officialMojangMappings()
+        parchment("org.parchmentmc.data:parchment-${parchment_minecraft}:${parchment_version}@zip")
+    }
+    // Dependencies
+    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
+    modImplementation("dev.obscuria:fragmentum-fabric:1.20.1-${fragmentum_version}")
+    modImplementation("software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}")
+    implementation("com.eliotlash.mclib:mclib:20")
+    implementation project(":common")
+    // Compats
+    modImplementation("mezz.jei:jei-${minecraft_version}-fabric:${jei_version}")
+    modImplementation("dev.emi:trinkets:${trinkets_version}")
+    // Environment
+    modLocalRuntime("com.terraformersmc:modmenu:7.2.2")
+    modLocalRuntime("fuzs.forgeconfigapiport:forgeconfigapiport-fabric:8.0.0")
+    modLocalRuntime("fuzs.forgeconfigscreens:forgeconfigscreens-fabric:8.0.2")
+}
+
+loom {
+    if (project(":common").file("src/main/resources/${mod_id}.accesswidener").exists()) {
+        accessWidenerPath.set(project(":common").file("src/main/resources/${mod_id}.accesswidener"))
+    }
+    mixin {
+        defaultRefmapName.set("${mod_id}.refmap.json")
+    }
+    runs {
+        client {
+            client()
+            programArgs "--username", "Dev"
+            setConfigName("Fabric Client")
+            ideConfigGenerated(true)
+            runDir("run")
+        }
+        server {
+            server()
+            setConfigName("Fabric Server")
+            ideConfigGenerated(true)
+            runDir("run")
+        }
+    }
+}
+
+modrinth {
+    autoAddDependsOn = false
+}
+
+hekate {
+    metadata = uri(metadata_lookup)
+}

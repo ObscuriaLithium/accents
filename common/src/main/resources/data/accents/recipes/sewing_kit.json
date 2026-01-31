@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "0": { "tag": "c:leathers" },
+    "1": { "tag": "c:strings" },
+    "2": { "tag": "c:nuggets/iron" }
+  },
+  "pattern": [
+    "012",
+    "12 ",
+    "2  "
+  ],
+  "result": {
+    "item": "accents:sewing_kit"
+  }
+}

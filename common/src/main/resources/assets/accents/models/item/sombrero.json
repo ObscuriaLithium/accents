@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "accents:item/sombrero",
+    "layer1": "accents:item/sombrero_overlay"
+  }
+}

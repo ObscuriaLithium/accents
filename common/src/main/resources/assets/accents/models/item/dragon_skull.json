@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "accents:item/dragon_skull",
+    "layer1": "accents:item/dragon_skull_overlay"
+  }
+}

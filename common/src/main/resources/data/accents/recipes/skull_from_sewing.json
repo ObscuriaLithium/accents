@@ -1,0 +1,8 @@
+{
+  "type": "accents:sewing",
+  "ingredient": {
+    "item": "accents:sewing_kit"
+  },
+  "result": "accents:skull",
+  "count": 1
+}

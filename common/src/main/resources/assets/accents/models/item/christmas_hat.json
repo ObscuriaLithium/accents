@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "accents:item/christmas_hat",
+    "layer1": "accents:item/christmas_hat_overlay"
+  }
+}
