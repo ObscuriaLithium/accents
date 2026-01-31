@@ -1,5 +1,7 @@
 # Accents
 
+<img width="100%" src="https://cdn.modrinth.com/data/fALx4O2Q/images/f832ada384bcc9394a57aba17e8204a03e5ccd7c.jpeg">
+
 <center>
     <a href="https://www.curseforge.com/minecraft/mc-mods/accents" rel="nofollow"><img alt="Fabric" src="https://img.shields.io/badge/Fabric-8c2454?style=for-the-badge"></a>
     <a href="https://www.curseforge.com/minecraft/mc-mods/accents" rel="nofollow"><img alt="Forge" src="https://img.shields.io/badge/Forge-8c2454?style=for-the-badge"></a>
