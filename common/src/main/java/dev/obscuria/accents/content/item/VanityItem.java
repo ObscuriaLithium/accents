@@ -2,6 +2,8 @@ package dev.obscuria.accents.content.item;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import dev.obscuria.accents.client.renderer.VanityRenderer;
+import dev.obscuria.accents.content.Vanity;
 import dev.obscuria.fragmentum.world.tooltip.TooltipOptions;
 import dev.obscuria.fragmentum.world.tooltip.Tooltips;
 import net.minecraft.ChatFormatting;
@@ -29,18 +31,36 @@ public abstract class VanityItem extends ArmorItem implements GeoItem, DyeableLe
 
     private static final TooltipOptions FLAVOR;
     protected static final String VANITY_MODIFIER = "vanity_modifier";
-    protected AnimatableInstanceCache animatableInstanceCache = GeckoLibUtil.createInstanceCache(this);
 
-    public VanityItem(ArmorMaterial material, Type type, Properties properties) {
-        super(material, type, properties);
+    protected final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+    protected final Vanity vanity;
+
+    public VanityItem(Vanity vanity, Properties properties) {
+        super(vanity.material(), vanity.type(), properties);
+        this.vanity = vanity;
     }
 
-    public abstract void collectModifiers(UUID uuid, BiConsumer<Attribute, AttributeModifier> consumer);
+    public void appendModifiers(UUID uuid, BiConsumer<Attribute, AttributeModifier> consumer) {
+        this.vanity.appendModifiers(uuid, consumer);
+    }
+
+    public VanityRenderer createVanityRenderer() {
+        return vanity.createRenderer();
+    }
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         var component = Component.translatable(stack.getDescriptionId() + ".desc");
         tooltip.addAll(Tooltips.process(component, this, FLAVOR));
+    }
+
+    @Override
+    public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot slot) {
+        if (slot != getEquipmentSlot()) return super.getDefaultAttributeModifiers(slot);
+        var uuid = UUID.nameUUIDFromBytes(getClass().getName().getBytes());
+        var modifiers = HashMultimap.<Attribute, AttributeModifier>create();
+        this.vanity.appendModifiers(uuid, modifiers::put);
+        return modifiers;
     }
 
     @Override
@@ -53,16 +73,7 @@ public abstract class VanityItem extends ArmorItem implements GeoItem, DyeableLe
 
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return animatableInstanceCache;
-    }
-
-    @Override
-    public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot slot) {
-        if (slot != getEquipmentSlot()) return super.getDefaultAttributeModifiers(slot);
-        var uuid = UUID.nameUUIDFromBytes(getClass().getName().getBytes());
-        var modifiers = HashMultimap.<Attribute, AttributeModifier>create();
-        this.collectModifiers(uuid, modifiers::put);
-        return modifiers;
+        return cache;
     }
 
     static {

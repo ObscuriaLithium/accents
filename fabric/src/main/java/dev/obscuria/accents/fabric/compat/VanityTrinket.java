@@ -18,9 +18,8 @@ public final class VanityTrinket implements Trinket {
     @Override
     public Multimap<Attribute, AttributeModifier> getModifiers(ItemStack stack, SlotReference slot, LivingEntity entity, UUID uuid) {
         var modifiers = Trinket.super.getModifiers(stack, slot, entity, uuid);
-        if (stack.getItem() instanceof VanityItem vanity) {
-            vanity.collectModifiers(uuid, modifiers::put);
-        }
+        if (stack.getItem() instanceof VanityItem vanity)
+            vanity.appendModifiers(uuid, modifiers::put);
         return modifiers;
     }
 }

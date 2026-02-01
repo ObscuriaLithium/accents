@@ -5,7 +5,7 @@ import dev.obscuria.accents.compat.AccentsCompats;
 import dev.obscuria.accents.fabric.compat.TrinketsCompat;
 import net.fabricmc.api.ModInitializer;
 
-public class FabricAccents implements ModInitializer {
+public final class FabricAccents implements ModInitializer {
 
     @Override
     public void onInitialize() {

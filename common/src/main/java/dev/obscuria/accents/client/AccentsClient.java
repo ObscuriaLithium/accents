@@ -12,7 +12,7 @@ import net.minecraft.world.item.ItemStack;
 public final class AccentsClient {
 
     public static void init() {
-        MenuScreens.register(AccentsMenus.SEWING_STATION.get(), SewingScreen::new);
+        MenuScreens.register(AccentsMenus.SEWING_STATION, SewingScreen::new);
         var registrar = FragmentumClientRegistry.registrar(Accents.MODID);
         registrar.registerItemColor(AccentsClient::pickVanityColor,
                 AccentsItems.CAPTAIN_HAT,

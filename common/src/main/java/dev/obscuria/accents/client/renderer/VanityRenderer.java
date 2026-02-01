@@ -15,29 +15,29 @@ import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.GeoArmorRenderer;
 import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 
-public abstract class VanityRenderer<T extends VanityItem> extends GeoArmorRenderer<T> {
+public abstract class VanityRenderer extends GeoArmorRenderer<VanityItem> {
 
-    public VanityRenderer(GeoModel<T> model) {
+    public VanityRenderer(GeoModel<VanityItem> model) {
         super(model);
-        addRenderLayer(new OverlayLayer<>(this, false));
+        addRenderLayer(new OverlayLayer(this, false));
     }
 
-    public VanityRenderer(GeoModel<T> model, boolean glowing) {
+    public VanityRenderer(GeoModel<VanityItem> model, boolean glowing) {
         super(model);
-        addRenderLayer(new OverlayLayer<>(this, glowing));
+        addRenderLayer(new OverlayLayer(this, glowing));
     }
 
     public ItemStack stack() {
         return currentStack;
     }
 
-    public static final class OverlayLayer<T extends VanityItem> extends GeoRenderLayer<T> {
+    public static final class OverlayLayer extends GeoRenderLayer<VanityItem> {
 
-        private final VanityRenderer<T> vanity;
+        private final VanityRenderer vanity;
         private final ResourceLocation texture;
         private final boolean glowing;
 
-        public OverlayLayer(VanityRenderer<T> renderer, boolean glowing) {
+        public OverlayLayer(VanityRenderer renderer, boolean glowing) {
             super(renderer);
             this.texture = this.getTextureResource(renderer.getAnimatable()).withPath(this::pathToOverlay);
             this.vanity = renderer;
@@ -46,7 +46,7 @@ public abstract class VanityRenderer<T extends VanityItem> extends GeoArmorRende
 
         @Override
         public void render(
-                PoseStack poseStack, T animatable, BakedGeoModel bakedModel, RenderType renderType,
+                PoseStack poseStack, VanityItem animatable, BakedGeoModel bakedModel, RenderType renderType,
                 MultiBufferSource bufferSource, VertexConsumer buffer,
                 float partialTick, int packedLight, int packedOverlay) {
             var overlayRenderType = getRenderType(animatable, bufferSource, partialTick);
@@ -61,7 +61,7 @@ public abstract class VanityRenderer<T extends VanityItem> extends GeoArmorRende
                     OverlayTexture.NO_OVERLAY, r, g, b, 1.0F);
         }
 
-        private RenderType getRenderType(T animatable, MultiBufferSource bufferSource, float partialTick) {
+        private RenderType getRenderType(VanityItem animatable, MultiBufferSource bufferSource, float partialTick) {
             return glowing
                     ? RenderType.eyes(texture)
                     : renderer.getRenderType(animatable, texture, bufferSource, partialTick);

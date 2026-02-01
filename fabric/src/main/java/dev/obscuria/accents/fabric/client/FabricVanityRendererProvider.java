@@ -1,7 +1,8 @@
 package dev.obscuria.accents.fabric.client;
 
 import dev.obscuria.accents.client.renderer.VanityRenderer;
-import dev.obscuria.accents.fabric.content.item.FabricVanityArmorItem;
+import dev.obscuria.accents.content.item.VanityItem;
+import dev.obscuria.accents.fabric.content.FabricVanityItem;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -11,10 +12,10 @@ import software.bernie.geckolib.animatable.client.RenderProvider;
 
 public final class FabricVanityRendererProvider implements RenderProvider {
 
-    private final FabricVanityArmorItem item;
-    private @Nullable VanityRenderer<?> renderer;
+    private final VanityItem item;
+    private @Nullable VanityRenderer renderer;
 
-    public FabricVanityRendererProvider(FabricVanityArmorItem item) {
+    public FabricVanityRendererProvider(FabricVanityItem item) {
         this.item = item;
     }
 

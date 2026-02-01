@@ -42,7 +42,7 @@ public final class SewingMenu extends AbstractContainerMenu {
     }
 
     public SewingMenu(int containerId, Inventory inventory, final ContainerLevelAccess access) {
-        super(AccentsMenus.SEWING_STATION.get(), containerId);
+        super(AccentsMenus.SEWING_STATION, containerId);
 
         this.selectedRecipeIndex = DataSlot.standalone();
         this.recipes = Lists.newArrayList();
@@ -139,7 +139,7 @@ public final class SewingMenu extends AbstractContainerMenu {
     }
 
     public MenuType<?> getType() {
-        return AccentsMenus.SEWING_STATION.get();
+        return AccentsMenus.SEWING_STATION;
     }
 
     public void registerUpdateListener(Runnable listener) {
