@@ -1,5 +1,6 @@
 package dev.obscuria.accents;
 
+import dev.obscuria.accents.config.CommonConfig;
 import dev.obscuria.accents.content.IVanityProvider;
 import dev.obscuria.accents.content.registry.AccentsRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -21,6 +22,7 @@ public final class Accents {
     }
 
     public static void init() {
+        CommonConfig.init();
         AccentsRegistries.init();
         GeckoLib.initialize();
     }
