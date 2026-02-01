@@ -4,16 +4,15 @@ import dev.emi.trinkets.api.TrinketsApi;
 import dev.emi.trinkets.api.client.TrinketRendererRegistry;
 import dev.obscuria.accents.content.registry.AccentsItems;
 import dev.obscuria.accents.fabric.client.renderer.AutoTrinketRenderer;
-import dev.obscuria.accents.fabric.content.item.trinket.*;
 
 public final class TrinketsCompat {
 
     public static void init() {
-        TrinketsApi.registerTrinket(AccentsItems.SHEATHED_KATANA.asItem(), SheathedKatanaTrinket.SHARED);
-        TrinketsApi.registerTrinket(AccentsItems.HOLSTERED_BELT.asItem(), HolsteredBeltTrinket.SHARED);
-        TrinketsApi.registerTrinket(AccentsItems.BANDOLIER.asItem(), BandolierTrinket.SHARED);
-        TrinketsApi.registerTrinket(AccentsItems.QUIVER.asItem(), QuiverTrinket.SHARED);
-        TrinketsApi.registerTrinket(AccentsItems.WINGS.asItem(), WingsTrinket.SHARED);
+        TrinketsApi.registerTrinket(AccentsItems.SHEATHED_KATANA.asItem(), VanityTrinket.SHARED);
+        TrinketsApi.registerTrinket(AccentsItems.HOLSTERED_BELT.asItem(), VanityTrinket.SHARED);
+        TrinketsApi.registerTrinket(AccentsItems.BANDOLIER.asItem(), VanityTrinket.SHARED);
+        TrinketsApi.registerTrinket(AccentsItems.QUIVER.asItem(), VanityTrinket.SHARED);
+        TrinketsApi.registerTrinket(AccentsItems.WINGS.asItem(), VanityTrinket.SHARED);
     }
 
     public static void clientInit() {

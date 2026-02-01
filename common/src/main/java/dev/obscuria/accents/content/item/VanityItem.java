@@ -1,10 +1,15 @@
 package dev.obscuria.accents.content.item;
 
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 import dev.obscuria.fragmentum.world.tooltip.TooltipOptions;
 import dev.obscuria.fragmentum.world.tooltip.Tooltips;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
@@ -17,15 +22,20 @@ import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
+import java.util.UUID;
+import java.util.function.BiConsumer;
 
 public abstract class VanityItem extends ArmorItem implements GeoItem, DyeableLeatherItem {
 
     private static final TooltipOptions FLAVOR;
+    protected static final String VANITY_MODIFIER = "vanity_modifier";
     protected AnimatableInstanceCache animatableInstanceCache = GeckoLibUtil.createInstanceCache(this);
 
     public VanityItem(ArmorMaterial material, Type type, Properties properties) {
         super(material, type, properties);
     }
+
+    public abstract void collectModifiers(UUID uuid, BiConsumer<Attribute, AttributeModifier> consumer);
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
@@ -44,6 +54,15 @@ public abstract class VanityItem extends ArmorItem implements GeoItem, DyeableLe
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return animatableInstanceCache;
+    }
+
+    @Override
+    public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot slot) {
+        if (slot != getEquipmentSlot()) return super.getDefaultAttributeModifiers(slot);
+        var uuid = UUID.nameUUIDFromBytes(getClass().getName().getBytes());
+        var modifiers = HashMultimap.<Attribute, AttributeModifier>create();
+        this.collectModifiers(uuid, modifiers::put);
+        return modifiers;
     }
 
     static {
