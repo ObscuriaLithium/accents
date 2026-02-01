@@ -15,6 +15,7 @@ public final class AccentsClient {
         MenuScreens.register(AccentsMenus.SEWING_STATION, SewingScreen::new);
         var registrar = FragmentumClientRegistry.registrar(Accents.MODID);
         registrar.registerItemColor(AccentsClient::pickVanityColor,
+                AccentsItems.CAKEMAN_PLUSHIE,
                 AccentsItems.CAPTAIN_HAT,
                 AccentsItems.CHRISTMAS_HAT,
                 AccentsItems.COWBOY_HAT,
@@ -32,7 +33,11 @@ public final class AccentsClient {
                 AccentsItems.SOMBRERO,
                 AccentsItems.HOLSTERED_BELT,
                 AccentsItems.STRAW_HAT,
-                AccentsItems.KASA_HAT);
+                AccentsItems.KASA_HAT,
+                AccentsItems.HERMES_BOOTS,
+                AccentsItems.BANDOLIER,
+                AccentsItems.CROWN,
+                AccentsItems.HORNS);
     }
 
     private static int pickVanityColor(ItemStack stack, int layer) {

@@ -1,0 +1,8 @@
+{
+  "type": "accents:sewing",
+  "ingredient": {
+    "item": "accents:sewing_kit"
+  },
+  "result": "accents:hermes_boots",
+  "count": 1
+}

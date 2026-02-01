@@ -26,7 +26,10 @@ public enum AccentsCreativeTabs {
     interface Icons {
 
         static ItemStack general() {
-            return AccentsItems.CAKEMAN_PLUSHIE.get().getDefaultInstance();
+            var stack = AccentsItems.CAKEMAN_PLUSHIE.instantiate();
+            if (stack.getItem() instanceof DyeableLeatherItem item)
+                item.setColor(stack, 16733525);
+            return stack;
         }
     }
 
@@ -47,6 +50,7 @@ public enum AccentsCreativeTabs {
             output.accept(AccentsItems.SEWING_KIT);
             output.accept(AccentsItems.KASA_HAT);
 
+            acceptDyed(output, AccentsItems.CAKEMAN_PLUSHIE, RED, LIGHT_BLUE);
             acceptDyed(output, AccentsItems.CAPTAIN_HAT, WHITE, BLACK);
             acceptDyed(output, AccentsItems.PIRATE_HAT, RED, LIME);
             acceptDyed(output, AccentsItems.CHRISTMAS_HAT, RED, PURPLE);
@@ -57,19 +61,17 @@ public enum AccentsCreativeTabs {
             acceptDyed(output, AccentsItems.STRAW_HAT, RED, LIME);
             acceptDyed(output, AccentsItems.SOMBRERO, RED, BLUE);
             acceptDyed(output, AccentsItems.WIZARD_HAT, BLUE, BLACK);
+            acceptDyed(output, AccentsItems.CROWN, RED, LIME);
             acceptDyed(output, AccentsItems.PUMPKIN_HAT, YELLOW, LIME);
+            acceptDyed(output, AccentsItems.HORNS, BLACK, RED);
             acceptDyed(output, AccentsItems.SKULL, WHITE, BLACK);
             acceptDyed(output, AccentsItems.DRAGON_SKULL, WHITE, BLACK);
             acceptDyed(output, AccentsItems.QUIVER, BLACK, LIME);
+            acceptDyed(output, AccentsItems.BANDOLIER, BLACK, LIGHT_BLUE);
             acceptDyed(output, AccentsItems.SHEATHED_KATANA, RED, PURPLE);
             acceptDyed(output, AccentsItems.WINGS, WHITE, BLACK);
             acceptDyed(output, AccentsItems.HOLSTERED_BELT, LIGHT_BLUE, BLACK);
-
-            //output.accept(AccentsItems.BANDOLIER);
-            //output.accept(AccentsItems.CAKEMAN_PLUSHIE);
-            //output.accept(AccentsItems.CROWN);
-            //output.accept(AccentsItems.HERMES_BOOTS);
-            //output.accept(AccentsItems.HORNS);
+            acceptDyed(output, AccentsItems.HERMES_BOOTS, LIGHT_BLUE, LIME);
         }
 
         private static void acceptDyed(

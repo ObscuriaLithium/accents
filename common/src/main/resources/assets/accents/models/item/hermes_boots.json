@@ -1,6 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "accents:item/hermes_boots"
+    "layer0": "accents:item/hermes_boots",
+    "layer1": "accents:item/hermes_boots_overlay"
   }
 }
