@@ -1,0 +1,1 @@
+- Fixed the drop and required harvesting tools for the Sewing Station.
