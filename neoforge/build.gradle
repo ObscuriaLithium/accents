@@ -1,0 +1,60 @@
+plugins {
+    id 'multiloader-loader'
+    id 'net.neoforged.moddev'
+    id 'dev.obscuria.hekate'
+}
+
+dependencies {
+    // Dependencies
+    implementation("dev.obscuria:fragmentum-neoforge:1.21.1-${fragmentum_version}")
+    implementation("software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:${geckolib_version}")
+    implementation("com.eliotlash.mclib:mclib:20")
+    // Compats
+    implementation("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+    implementation("top.theillusivec4.curios:curios-neoforge:${curios_version}:api")
+    // Environment
+    runtimeOnly("top.theillusivec4.curios:curios-neoforge:${curios_version}")
+}
+
+neoForge {
+    version = neoforge_version
+    def at = project(':common').file('src/main/resources/META-INF/accesstransformer.cfg')
+    if (at.exists()) {
+        accessTransformers.from(at.absolutePath)
+    }
+    parchment {
+        minecraftVersion = parchment_minecraft
+        mappingsVersion = parchment_version
+    }
+    runs {
+        configureEach {
+            systemProperty('neoforge.enabledGameTestNamespaces', mod_id)
+            ideName = "NeoForge ${it.name.capitalize()} (${project.path})" // Unify the run config names with fabric
+        }
+        client {
+            client()
+        }
+        data {
+            data()
+            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+        }
+        server {
+            server()
+        }
+    }
+    mods {
+        "${mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+modrinth {
+    autoAddDependsOn = false
+}
+
+hekate {
+    metadata = uri(metadata_lookup)
+}

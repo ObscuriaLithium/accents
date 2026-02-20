@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "accents:item/holstered_belt",
+    "layer1": "accents:item/holstered_belt_overlay"
+  }
+}

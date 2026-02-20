@@ -1,0 +1,10 @@
+{
+  "type": "accents:sewing",
+  "ingredient": {
+    "item": "accents:sewing_kit"
+  },
+  "result": {
+    "id": "accents:sombrero",
+    "count": 1
+  }
+}

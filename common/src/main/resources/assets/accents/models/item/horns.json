@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "accents:item/horns",
+    "layer1": "accents:item/horns_overlay"
+  }
+}

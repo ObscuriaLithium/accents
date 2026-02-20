@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "accents:item/sheathed_katana",
+    "layer1": "accents:item/sheathed_katana_overlay"
+  }
+}

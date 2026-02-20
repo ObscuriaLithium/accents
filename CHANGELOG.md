@@ -1,0 +1,2 @@
+- Improved compatibility with the Sinytra Connector environment: the Fabric version of the mod will work with Curios API, and the Forge version will work with Trinkets API.
+- General improvements and codebase optimizations.

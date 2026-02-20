@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "accents:item/wings",
+    "layer1": "accents:item/wings_overlay"
+  }
+}

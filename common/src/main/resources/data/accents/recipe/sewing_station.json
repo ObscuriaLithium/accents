@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "0": { "tag": "minecraft:wool_carpets" },
+    "1": { "tag": "c:strings" },
+    "2": { "tag": "minecraft:planks" },
+    "3": { "item": "minecraft:polished_deepslate" }
+  },
+  "pattern": [
+    " 00",
+    "122",
+    "133"
+  ],
+  "result": {
+    "id": "accents:sewing_station",
+    "count": 1
+  }
+}

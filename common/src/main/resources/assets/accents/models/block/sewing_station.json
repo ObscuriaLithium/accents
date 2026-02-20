@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "up": "accents:block/sewing_station_top",
+    "down": "minecraft:block/polished_deepslate",
+    "east": "accents:block/sewing_station_side",
+    "north": "accents:block/sewing_station_front",
+    "south": "accents:block/sewing_station_side",
+    "west": "accents:block/sewing_station_front",
+    "particle": "accents:block/sewing_station_front"
+  }
+}

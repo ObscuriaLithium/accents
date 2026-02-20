@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "accents:blocks/sewing_station",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "accents:sewing_station"
+        }
+      ]
+    }
+  ]
+}
