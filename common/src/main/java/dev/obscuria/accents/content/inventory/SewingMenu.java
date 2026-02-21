@@ -11,7 +11,6 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.SelectableRecipe;
@@ -44,8 +43,7 @@ public final class SewingMenu extends AbstractContainerMenu {
         this.selectedRecipeIndex = DataSlot.standalone();
         this.recipesForInput = SelectableRecipe.SingleInputSet.empty();
         this.input = ItemStack.EMPTY;
-        this.slotUpdateListener = () -> {
-        };
+        this.slotUpdateListener = () -> {};
         this.container = new SimpleContainer(1) {
             public void setChanged() {
                 super.setChanged();
@@ -70,10 +68,10 @@ public final class SewingMenu extends AbstractContainerMenu {
                     SewingMenu.this.setupResultSlot(SewingMenu.this.selectedRecipeIndex.get());
                 }
 
-                access.execute((p_457463_, p_457464_) -> {
-                    long i = p_457463_.getGameTime();
+                access.execute((level, pos) -> {
+                    long i = level.getGameTime();
                     if (SewingMenu.this.lastSoundTime != i) {
-                        p_457463_.playSound(null, p_457464_, SoundEvents.SHEARS_SNIP, SoundSource.BLOCKS, 1.0F, 1.0F);
+                        level.playSound(null, pos, SoundEvents.SHEARS_SNIP, SoundSource.BLOCKS, 1.0F, 1.0F);
                         SewingMenu.this.lastSoundTime = i;
                     }
 
@@ -148,15 +146,15 @@ public final class SewingMenu extends AbstractContainerMenu {
     void setupResultSlot(int id) {
         Optional<RecipeHolder<SewingRecipe>> optional;
         if (!this.recipesForInput.isEmpty() && this.isValidRecipeIndex(id)) {
-            SelectableRecipe.SingleInputEntry<SewingRecipe> singleinputentry = this.recipesForInput.entries().get(id);
-            optional = singleinputentry.recipe().recipe();
+            var recipe = this.recipesForInput.entries().get(id);
+            optional = recipe.recipe().recipe();
         } else {
             optional = Optional.empty();
         }
 
-        optional.ifPresentOrElse((p_379191_) -> {
-            this.resultContainer.setRecipeUsed(p_379191_);
-            this.resultSlot.set(p_379191_.value().assemble(new SingleRecipeInput(this.container.getItem(0)), this.level.registryAccess()));
+        optional.ifPresentOrElse((holder) -> {
+            this.resultContainer.setRecipeUsed(holder);
+            this.resultSlot.set(holder.value().assemble(new SingleRecipeInput(this.container.getItem(0)), this.level.registryAccess()));
         }, () -> {
             this.resultSlot.set(ItemStack.EMPTY);
             this.resultContainer.setRecipeUsed(null);
@@ -177,11 +175,11 @@ public final class SewingMenu extends AbstractContainerMenu {
     }
 
     public ItemStack quickMoveStack(Player player, int index) {
-        ItemStack itemstack = ItemStack.EMPTY;
-        Slot slot = this.slots.get(index);
+        var itemstack = ItemStack.EMPTY;
+        var slot = this.slots.get(index);
         if (slot != null && slot.hasItem()) {
-            ItemStack itemstack1 = slot.getItem();
-            Item item = itemstack1.getItem();
+            var itemstack1 = slot.getItem();
+            var item = itemstack1.getItem();
             itemstack = itemstack1.copy();
             if (index == 1) {
                 item.onCraftedBy(itemstack1, player);
@@ -229,6 +227,6 @@ public final class SewingMenu extends AbstractContainerMenu {
     public void removed(Player player) {
         super.removed(player);
         this.resultContainer.removeItemNoUpdate(1);
-        this.access.execute((p_40313_, p_40314_) -> this.clearContainer(player, this.container));
+        this.access.execute((level, pos) -> this.clearContainer(player, this.container));
     }
 }

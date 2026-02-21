@@ -1,1 +1,1 @@
-- Ported to Minecraft 1.21.11
+- Fixed a startup crash related to AccessWidener.
