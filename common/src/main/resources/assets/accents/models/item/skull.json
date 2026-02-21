@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "accents:item/skull_dyeable",
+    "layer1": "accents:item/skull"
+  }
+}

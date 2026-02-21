@@ -1,0 +1,8 @@
+{
+  "type": "accents:sewing",
+  "ingredient": "accents:sewing_kit",
+  "result": {
+    "id": "accents:pickelhaube",
+    "count": 1
+  }
+}

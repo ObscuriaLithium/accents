@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "accents:item/pickelhaube",
+    "tints": [
+      {
+        "type": "minecraft:dye",
+        "default": -6265536
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "accents:item/crown_dyeable",
+    "layer1": "accents:item/crown"
+  }
+}

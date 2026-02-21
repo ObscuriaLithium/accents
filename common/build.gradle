@@ -1,0 +1,64 @@
+plugins {
+    id 'multiloader-common'
+    id 'net.neoforged.moddev'
+}
+
+dependencies {
+    // Mixin
+    compileOnly("org.spongepowered:mixin:0.8.5")
+    compileOnly("io.github.llamalad7:mixinextras-common:0.3.5")
+    annotationProcessor("io.github.llamalad7:mixinextras-common:0.3.5")
+    // Dependencies
+    implementation("dev.obscuria:fragmentum-api:${minecraft_version}-${fragmentum_version}")
+    implementation("software.bernie.geckolib:geckolib-forge-${minecraft_version}:${geckolib_version}")
+    implementation("com.eliotlash.mclib:mclib:20")
+    // Compats
+    compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+}
+
+neoForge {
+    neoFormVersion = neo_form_version
+    def at = file('src/main/resources/META-INF/accesstransformer.cfg')
+    if (at.exists()) {
+        accessTransformers.from(at.absolutePath)
+    }
+    parchment {
+        minecraftVersion = parchment_minecraft
+        mappingsVersion = parchment_version
+    }
+}
+
+configurations {
+    commonJava {
+        canBeResolved = false
+        canBeConsumed = true
+    }
+    commonResources {
+        canBeResolved = false
+        canBeConsumed = true
+    }
+}
+
+artifacts {
+    commonJava sourceSets.main.java.sourceDirectories.singleFile
+    commonResources sourceSets.main.resources.sourceDirectories.singleFile
+}
+
+// Implement mcgradleconventions loader attribute
+def loaderAttribute = Attribute.of('io.github.mcgradleconventions.loader', String)
+['apiElements', 'runtimeElements', 'sourcesElements', 'javadocElements'].each { variant ->
+    configurations.named("$variant") {
+        attributes {
+            attribute(loaderAttribute, 'common')
+        }
+    }
+}
+sourceSets.configureEach {
+    [it.compileClasspathConfigurationName, it.runtimeClasspathConfigurationName].each { variant->
+        configurations.named("$variant") {
+            attributes {
+                attribute(loaderAttribute, 'common')
+            }
+        }
+    }
+}

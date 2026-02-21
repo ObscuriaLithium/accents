@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": "#minecraft:wool_carpets",
+    "B": "#c:strings",
+    "C": "#minecraft:planks",
+    "D": "minecraft:polished_deepslate"
+  },
+  "pattern": [
+    " AA",
+    "BCC",
+    "BDD"
+  ],
+  "result": {
+    "id": "accents:sewing_station",
+    "count": 1
+  }
+}

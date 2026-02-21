@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.obscuria.accents.mixin",
+  "refmap": "${mod_id}.refmap.json",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "MixinItemStack",
+    "MixinPlayerList",
+    "MixinRecipeAccess",
+    "MixinRecipeManager"
+  ],
+  "client": [
+    "client.MixinClientRecipeContainer"
+  ],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
+
