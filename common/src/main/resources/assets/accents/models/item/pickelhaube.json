@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "accents:item/pickelhaube",
-    "layer1": "accents:item/pickelhaube_overlay"
+    "layer0": "accents:item/pickelhaube_dyeable",
+    "layer1": "accents:item/pickelhaube"
   }
 }

@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "accents:item/quiver",
-    "layer1": "accents:item/quiver_overlay"
+    "layer0": "accents:item/quiver_dyeable",
+    "layer1": "accents:item/quiver"
   }
 }

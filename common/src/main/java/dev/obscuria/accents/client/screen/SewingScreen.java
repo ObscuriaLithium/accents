@@ -41,8 +41,8 @@ public final class SewingScreen extends AbstractContainerScreen<SewingMenu> {
         var j = topPos;
         graphics.blit(BG, i, j, 0, 0, imageWidth, imageHeight);
         var k = (int) (41.0F * scrollOffs);
-        ResourceLocation resourcelocation = this.isScrollBarActive() ? SCROLLER_SPRITE : SCROLLER_DISABLED_SPRITE;
-        graphics.blitSprite(resourcelocation, i + 119, j + 15 + k, 12, 15);
+        var scrollSprite = this.isScrollBarActive() ? SCROLLER_SPRITE : SCROLLER_DISABLED_SPRITE;
+        graphics.blitSprite(scrollSprite, i + 119, j + 15 + k, 12, 15);
         var l = leftPos + 52;
         var i1 = topPos + 14;
         var j1 = startIndex + 12;

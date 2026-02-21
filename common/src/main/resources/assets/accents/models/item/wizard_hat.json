@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "accents:item/wizard_hat",
-    "layer1": "accents:item/wizard_hat_overlay"
+    "layer0": "accents:item/wizard_hat_dyeable",
+    "layer1": "accents:item/wizard_hat"
   }
 }

@@ -65,7 +65,7 @@ public class AutoVanityRenderer extends GeoArmorRenderer<VanityItem> {
         }
 
         private String pathToOverlay(String path) {
-            return path.replace(".png", "_overlay.png");
+            return path.replace(".png", "_dyeable.png");
         }
     }
 }

@@ -14,7 +14,8 @@
   },
   "license": "${license}",
   "icon": "${mod_id}.png",
-  "environment": "client",
+  "accessWidener": "${mod_id}.accesswidener",
+  "environment": "*",
   "entrypoints": {
     "main": [
       "dev.obscuria.accents.fabric.FabricAccents"

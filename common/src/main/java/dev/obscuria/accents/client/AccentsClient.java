@@ -41,7 +41,7 @@ public final class AccentsClient {
     }
 
     private static int pickVanityColor(ItemStack stack, int layer) {
-        if (layer != 1) return -1;
+        if (layer != 0) return -1;
         return DyedItemColor.getOrDefault(stack, DyedItemColor.LEATHER_COLOR);
     }
 }

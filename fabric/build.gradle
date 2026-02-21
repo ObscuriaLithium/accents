@@ -14,15 +14,15 @@ dependencies {
     // Dependencies
     modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
-    implementation("dev.obscuria:fragmentum-fabric:1.21.1-${fragmentum_version}")
+    modImplementation("dev.obscuria:fragmentum-fabric:1.21.1-${fragmentum_version}")
     modImplementation("software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}")
     implementation("com.eliotlash.mclib:mclib:20")
     // Compats
     modImplementation("mezz.jei:jei-${minecraft_version}-fabric:${jei_version}")
     modImplementation("dev.emi:trinkets:${trinkets_version}")
     // Environment
-    modImplementation("com.terraformersmc:modmenu:11.0.3")
     modLocalRuntime("fuzs.forgeconfigapiport:forgeconfigapiport-fabric:21.1.6")
+    modLocalRuntime("com.terraformersmc:modmenu:11.0.3")
 }
 
 loom {
