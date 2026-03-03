@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "accents:item/item_satchel_dyeable",
+    "layer1": "accents:item/item_satchel"
+  }
+}

@@ -1,6 +1,5 @@
 package dev.obscuria.accents.content;
 
-import dev.obscuria.accents.client.renderer.VanityRenderer;
 import dev.obscuria.accents.config.CommonConfig;
 import dev.obscuria.fragmentum.config.ConfigValue;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -8,21 +7,16 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.ArmorMaterials;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.function.BiConsumer;
-import java.util.function.Supplier;
 
 public record Vanity(
         ArmorItem.Type type,
-        ArmorMaterial material,
         ConfigValue<List<? extends String>> modifiers,
-        Supplier<Supplier<VanityRenderer>> renderer,
         boolean isTrinket
 ) {
     private static final String TEMPLATE_SEPARATOR = " ";
@@ -50,10 +44,6 @@ public record Vanity(
         }
     }
 
-    public VanityRenderer createRenderer() {
-        return renderer.get().get();
-    }
-
     private @Nullable Attribute parseAttribute(String input) {
         @Nullable var id = ResourceLocation.tryParse(input);
         return id == null ? null : BuiltInRegistries.ATTRIBUTE.get(id);
@@ -78,16 +68,10 @@ public record Vanity(
         private final ArmorItem.Type type;
         private final boolean isTrinket;
         private @Nullable ConfigValue<List<? extends String>> modifiers;
-        private ArmorMaterial material = ArmorMaterials.LEATHER;
 
         private Builder(ArmorItem.Type type, boolean isTrinket) {
             this.type = type;
             this.isTrinket = isTrinket;
-        }
-
-        public Builder material(ArmorMaterial material) {
-            this.material = material;
-            return this;
         }
 
         public Builder modifiers(ConfigValue<List<? extends String>> source) {
@@ -95,9 +79,9 @@ public record Vanity(
             return this;
         }
 
-        public Vanity build(Supplier<Supplier<VanityRenderer>> renderer) {
+        public Vanity build() {
             Objects.requireNonNull(modifiers, "Vanity modifiers must be set");
-            return new Vanity(type, material, modifiers, renderer, isTrinket);
+            return new Vanity(type, modifiers, isTrinket);
         }
     }
 }

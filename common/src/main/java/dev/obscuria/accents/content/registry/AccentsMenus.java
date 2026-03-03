@@ -13,7 +13,7 @@ public interface AccentsMenus {
 
     private static <T extends AbstractContainerMenu> MenuType<T> register(String name, MenuType.MenuSupplier<T> supplier) {
         var type = new MenuType<>(supplier, FeatureFlags.VANILLA_SET);
-        AccentsRegistries.REGISTRAR.register(Registries.MENU, Accents.key(name), () -> type);
+        AccentsRegistries.REGISTRAR.register(Registries.MENU, Accents.identifier(name), () -> type);
         return type;
     }
 

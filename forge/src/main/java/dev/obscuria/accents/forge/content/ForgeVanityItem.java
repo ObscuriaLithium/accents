@@ -15,8 +15,8 @@ import java.util.function.Consumer;
 
 public final class ForgeVanityItem extends VanityItem {
 
-    public ForgeVanityItem(Vanity vanity, Properties properties) {
-        super(vanity, properties);
+    public ForgeVanityItem(boolean glowing, Vanity vanity, Properties properties) {
+        super(glowing, vanity, properties);
     }
 
     @Override

@@ -1,11 +1,8 @@
 {
   "itemGroup.accents.general": "Accents",
-
-  "container.sewing_station": "Sewing Station",
+  "container.sewing_station": "Sewing Table",
   "gui.jei.category.accents/sewing": "Sewing",
-
-  "block.accents.sewing_station": "Sewing Station",
-
+  "block.accents.sewing_station": "Sewing Table",
   "item.accents.sewing_kit": "Sewing Kit",
   "item.accents.captain_hat": "Captain Hat",
   "item.accents.captain_hat.desc": "Once guided a steady course. Now it simply remembers the sea.",
@@ -52,5 +49,15 @@
   "item.accents.wings": "Wings",
   "item.accents.wings.desc": "Not meant for flight, only for the feeling.",
   "item.accents.wizard_hat": "Wizard Hat",
-  "item.accents.wizard_hat.desc": "Holds thoughts better than spells."
+  "item.accents.wizard_hat.desc": "Holds thoughts better than spells.",
+  "item.accents.king_mask": "King Mask",
+  "item.accents.king_mask.desc": "Great and terrifying. Height not included.",
+  "item.accents.wide_brim_hat": "Wide Brim Hat",
+  "item.accents.wide_brim_hat.desc": "For tea parties and dark rituals alike.",
+  "item.accents.tundra_hood": "Tundra Hood",
+  "item.accents.tundra_hood.desc": "For winds that whisper and teeth that chatter.",
+  "item.accents.scarf": "Scarf",
+  "item.accents.scarf.desc": "Ideal for warmth and dramatic turns.",
+  "item.accents.item_satchel": "Item Satchel",
+  "item.accents.item_satchel.desc": "Carries the look, nothing else."
 }

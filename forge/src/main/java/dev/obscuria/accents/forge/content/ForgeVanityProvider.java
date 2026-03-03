@@ -8,7 +8,7 @@ import net.minecraft.world.item.Item;
 public final class ForgeVanityProvider implements IVanityProvider {
 
     @Override
-    public VanityItem create(Vanity vanity, Item.Properties properties) {
-        return new ForgeVanityItem(vanity, properties);
+    public VanityItem create(boolean glowing, Vanity vanity, Item.Properties properties) {
+        return new ForgeVanityItem(glowing, vanity, properties);
     }
 }

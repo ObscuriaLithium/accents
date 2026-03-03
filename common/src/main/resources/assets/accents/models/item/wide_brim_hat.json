@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "accents:item/wide_brim_hat_dyeable",
+    "layer1": "accents:item/wide_brim_hat"
+  }
+}

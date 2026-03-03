@@ -1,1 +1,4 @@
-- Fixed the drop and required harvesting tools for the Sewing Station.
+- Added 5 new vanity items: **King Mask**, **Scarf**, **Wide Brim Hat**, **Tundra Hood**, and **Item Satchel**.
+- Added 6 new language localizations: **Simplified Chinese**, **German**, **Spanish**, **Portuguese**, **Russian**, and **Ukrainian**.
+- Fixed Pickelhaube clipping issue.
+- General codebase improvements to better support future expansions.

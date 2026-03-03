@@ -15,7 +15,7 @@ public enum AccentsCreativeTabs {
     GENERAL("general", Icons::general, Contents::general);
 
     AccentsCreativeTabs(String key, Supplier<ItemStack> icon, CreativeModeTab.DisplayItemsGenerator contents) {
-        AccentsRegistries.REGISTRAR.register(Registries.CREATIVE_MODE_TAB, Accents.key(key), () -> CreativeModeTab
+        AccentsRegistries.REGISTRAR.register(Registries.CREATIVE_MODE_TAB, Accents.identifier(key), () -> CreativeModeTab
                 .builder(CreativeModeTab.Row.TOP, 1)
                 .title(Component.translatable("itemGroup.%s.%s".formatted(Accents.MODID, key)))
                 .displayItems(contents)
@@ -57,16 +57,21 @@ public enum AccentsCreativeTabs {
             acceptDyed(output, AccentsItems.COWBOY_HAT, WHITE, BLACK);
             acceptDyed(output, AccentsItems.TOP_HAT, WHITE, BLACK);
             acceptDyed(output, AccentsItems.OVERTOP_HAT, WHITE, BLACK);
+            acceptDyed(output, AccentsItems.TUNDRA_HOOD, LIGHT_BLUE, LIME);
             acceptDyed(output, AccentsItems.PICKELHAUBE, BLACK, LIGHT_BLUE);
             acceptDyed(output, AccentsItems.STRAW_HAT, RED, LIME);
             acceptDyed(output, AccentsItems.SOMBRERO, RED, BLUE);
             acceptDyed(output, AccentsItems.WIZARD_HAT, BLUE, BLACK);
+            acceptDyed(output, AccentsItems.WIDE_BRIM_HAT, RED, PURPLE);
             acceptDyed(output, AccentsItems.CROWN, RED, LIME);
             acceptDyed(output, AccentsItems.PUMPKIN_HAT, YELLOW, LIME);
             acceptDyed(output, AccentsItems.HORNS, BLACK, RED);
             acceptDyed(output, AccentsItems.SKULL, WHITE, BLACK);
             acceptDyed(output, AccentsItems.DRAGON_SKULL, WHITE, BLACK);
+            acceptDyed(output, AccentsItems.KING_MASK, WHITE, BLACK);
+            acceptDyed(output, AccentsItems.SCARF, RED, PURPLE);
             acceptDyed(output, AccentsItems.QUIVER, BLACK, LIME);
+            acceptDyed(output, AccentsItems.ITEM_SATCHEL, LIGHT_BLUE, BLACK);
             acceptDyed(output, AccentsItems.BANDOLIER, BLACK, LIGHT_BLUE);
             acceptDyed(output, AccentsItems.SHEATHED_KATANA, RED, PURPLE);
             acceptDyed(output, AccentsItems.WINGS, WHITE, BLACK);

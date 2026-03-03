@@ -17,7 +17,7 @@ public final class Accents {
     public static final Logger LOGGER = LoggerFactory.getLogger(DISPLAY_NAME);
     public static final IVanityProvider FACTORY;
 
-    public static ResourceLocation key(String name) {
+    public static ResourceLocation identifier(String name) {
         return new ResourceLocation(MODID, name);
     }
 

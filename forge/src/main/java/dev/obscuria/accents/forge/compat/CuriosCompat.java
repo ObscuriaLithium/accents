@@ -13,6 +13,8 @@ public final class CuriosCompat {
         CuriosApi.registerCurio(AccentsItems.BANDOLIER.asItem(), VanityCurio.SHARED);
         CuriosApi.registerCurio(AccentsItems.QUIVER.asItem(), VanityCurio.SHARED);
         CuriosApi.registerCurio(AccentsItems.WINGS.asItem(), VanityCurio.SHARED);
+        CuriosApi.registerCurio(AccentsItems.SCARF.asItem(), VanityCurio.SHARED);
+        CuriosApi.registerCurio(AccentsItems.ITEM_SATCHEL.asItem(), VanityCurio.SHARED);
 
         if (FMLEnvironment.dist.isClient())
             clientInit();
@@ -24,5 +26,7 @@ public final class CuriosCompat {
         CuriosRendererRegistry.register(AccentsItems.BANDOLIER.asItem(), VanityCurioRenderer::new);
         CuriosRendererRegistry.register(AccentsItems.QUIVER.asItem(), VanityCurioRenderer::new);
         CuriosRendererRegistry.register(AccentsItems.WINGS.asItem(), VanityCurioRenderer::new);
+        CuriosRendererRegistry.register(AccentsItems.SCARF.asItem(), VanityCurioRenderer::new);
+        CuriosRendererRegistry.register(AccentsItems.ITEM_SATCHEL.asItem(), VanityCurioRenderer::new);
     }
 }

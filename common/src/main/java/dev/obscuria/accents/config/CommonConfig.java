@@ -28,6 +28,11 @@ public final class CommonConfig {
     public static final ConfigValue<List<? extends String>> STRAW_HAT;
     public static final ConfigValue<List<? extends String>> TOP_HAT;
     public static final ConfigValue<List<? extends String>> WIZARD_HAT;
+    public static final ConfigValue<List<? extends String>> KING_MASK;
+    public static final ConfigValue<List<? extends String>> WIDE_BRIM_HAT;
+    public static final ConfigValue<List<? extends String>> TUNDRA_HOOD;
+    public static final ConfigValue<List<? extends String>> SCARF;
+    public static final ConfigValue<List<? extends String>> ITEM_SATCHEL;
     public static final ConfigValue<List<? extends String>> BANDOLIER;
     public static final ConfigValue<List<? extends String>> HOLSTERED_BELT;
     public static final ConfigValue<List<? extends String>> QUIVER;
@@ -73,6 +78,16 @@ public final class CommonConfig {
         List<String> WIZARD_HAT = List.of(
                 "minecraft:generic.movement_speed multiply:0.025",
                 "minecraft:generic.attack_damage multiply:0.025");
+        List<String> KING_MASK = List.of(
+                "minecraft:generic.knockback_resistance addition:0.1");
+        List<String> WIDE_BRIM_HAT = List.of(
+                "minecraft:generic.attack_damage multiply:0.05");
+        List<String> TUNDRA_HOOD = List.of(
+                "minecraft:generic.armor addition:1");
+        List<String> SCARF = List.of(
+                "minecraft:generic.max_health multiply:0.05");
+        List<String> ITEM_SATCHEL = List.of(
+                "minecraft:generic.attack_speed multiply:0.05");
         List<String> BANDOLIER = List.of(
                 "minecraft:generic.attack_speed multiply:0.05");
         List<String> HOLSTERED_BELT = List.of(
@@ -131,9 +146,19 @@ public final class CommonConfig {
                 .defineList("topHat", Defaults.TOP_HAT, String.class::isInstance);
         WIZARD_HAT = builder
                 .defineList("wizardHat", Defaults.WIZARD_HAT, String.class::isInstance);
+        KING_MASK = builder
+                .defineList("kingMask", Defaults.KING_MASK, String.class::isInstance);
+        WIDE_BRIM_HAT = builder
+                .defineList("wideBrimHat", Defaults.WIDE_BRIM_HAT, String.class::isInstance);
+        TUNDRA_HOOD = builder
+                .defineList("tundraHood", Defaults.TUNDRA_HOOD, String.class::isInstance);
+        SCARF = builder
+                .defineList("scarf", Defaults.SCARF, String.class::isInstance);
         builder.pop();
 
         builder.push("Chest");
+        ITEM_SATCHEL = builder
+                .defineList("itemSatchel", Defaults.ITEM_SATCHEL, String.class::isInstance);
         BANDOLIER = builder
                 .defineList("bandolier", Defaults.BANDOLIER, String.class::isInstance);
         QUIVER = builder

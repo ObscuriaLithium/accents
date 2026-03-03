@@ -1,28 +1,27 @@
 package dev.obscuria.accents.forge.client;
 
-import dev.obscuria.accents.client.renderer.VanityRenderer;
-import dev.obscuria.accents.content.item.VanityItem;
+import com.google.common.base.Suppliers;
+import dev.obscuria.accents.client.AutoVanityRenderer;
 import dev.obscuria.accents.forge.content.ForgeVanityItem;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
-import org.jetbrains.annotations.Nullable;
 
-public final class ForgeClientItemExtensions implements IClientItemExtensions {
+import java.util.function.Supplier;
 
-    private final VanityItem item;
-    private @Nullable VanityRenderer renderer;
+public record ForgeClientItemExtensions(
+        Supplier<AutoVanityRenderer> renderer
+) implements IClientItemExtensions {
 
     public ForgeClientItemExtensions(ForgeVanityItem item) {
-        this.item = item;
+        this(Suppliers.memoize(() -> new AutoVanityRenderer(item)));
     }
 
     @Override
     public HumanoidModel<?> getHumanoidArmorModel(LivingEntity entity, ItemStack stack, EquipmentSlot slot, HumanoidModel<?> original) {
-        if (this.renderer == null) this.renderer = item.createVanityRenderer();
-        this.renderer.prepForRender(entity, stack, slot, original);
-        return this.renderer;
+        this.renderer.get().prepForRender(entity, stack, slot, original);
+        return this.renderer.get();
     }
 }

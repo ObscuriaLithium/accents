@@ -12,6 +12,8 @@ public final class TrinketsCompat {
         TrinketsApi.registerTrinket(AccentsItems.BANDOLIER.asItem(), VanityTrinket.SHARED);
         TrinketsApi.registerTrinket(AccentsItems.QUIVER.asItem(), VanityTrinket.SHARED);
         TrinketsApi.registerTrinket(AccentsItems.WINGS.asItem(), VanityTrinket.SHARED);
+        TrinketsApi.registerTrinket(AccentsItems.SCARF.asItem(), VanityTrinket.SHARED);
+        TrinketsApi.registerTrinket(AccentsItems.ITEM_SATCHEL.asItem(), VanityTrinket.SHARED);
     }
 
     public static void clientInit() {
@@ -20,5 +22,7 @@ public final class TrinketsCompat {
         TrinketRendererRegistry.registerRenderer(AccentsItems.BANDOLIER.asItem(), VanityTrinketRenderer.SHARED);
         TrinketRendererRegistry.registerRenderer(AccentsItems.QUIVER.asItem(), VanityTrinketRenderer.SHARED);
         TrinketRendererRegistry.registerRenderer(AccentsItems.WINGS.asItem(), VanityTrinketRenderer.SHARED);
+        TrinketRendererRegistry.registerRenderer(AccentsItems.SCARF.asItem(), VanityTrinketRenderer.SHARED);
+        TrinketRendererRegistry.registerRenderer(AccentsItems.ITEM_SATCHEL.asItem(), VanityTrinketRenderer.SHARED);
     }
 }

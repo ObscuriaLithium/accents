@@ -18,11 +18,11 @@ import java.util.Objects;
 @JeiPlugin
 public final class JEIAccentsPlugin implements IModPlugin {
 
-    public static RecipeType<SewingRecipe> SEWING = new RecipeType<>(Accents.key("sewing"), SewingRecipe.class);
+    public static RecipeType<SewingRecipe> SEWING = new RecipeType<>(Accents.identifier("sewing"), SewingRecipe.class);
 
     @Override
     public ResourceLocation getPluginUid() {
-        return Accents.key("jei_plugin");
+        return Accents.identifier("jei_plugin");
     }
 
     @Override

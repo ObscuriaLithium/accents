@@ -12,7 +12,7 @@ public interface AccentsBlocks {
     DeferredBlock<SewingStationBlock> SEWING_STATION = register("sewing_station", SewingStationBlock::new);
 
     private static <T extends Block> DeferredBlock<T> register(String name, Supplier<T> supplier) {
-        return AccentsRegistries.REGISTRAR.registerBlock(Accents.key(name), supplier);
+        return AccentsRegistries.REGISTRAR.registerBlock(Accents.identifier(name), supplier);
     }
 
     static void init() {}

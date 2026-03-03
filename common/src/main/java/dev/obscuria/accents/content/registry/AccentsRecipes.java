@@ -12,7 +12,7 @@ public interface AccentsRecipes {
     Deferred<RecipeType<?>, RecipeType<SewingRecipe>> SEWING = register("sewing");
 
     private static <T extends Recipe<?>> Deferred<RecipeType<?>, RecipeType<T>> register(String name) {
-        return AccentsRegistries.REGISTRAR.register(Registries.RECIPE_TYPE, Accents.key(name), () -> new RecipeType<>() {
+        return AccentsRegistries.REGISTRAR.register(Registries.RECIPE_TYPE, Accents.identifier(name), () -> new RecipeType<>() {
             @Override
             public String toString() {
                 return name;

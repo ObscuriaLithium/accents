@@ -2,7 +2,6 @@ package dev.obscuria.accents.content.item;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import dev.obscuria.accents.client.renderer.VanityRenderer;
 import dev.obscuria.accents.content.Vanity;
 import dev.obscuria.fragmentum.world.tooltip.TooltipOptions;
 import dev.obscuria.fragmentum.world.tooltip.Tooltips;
@@ -30,22 +29,23 @@ import java.util.function.BiConsumer;
 public abstract class VanityItem extends ArmorItem implements GeoItem, DyeableLeatherItem {
 
     private static final TooltipOptions FLAVOR;
-    protected static final String VANITY_MODIFIER = "vanity_modifier";
 
     protected final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     protected final Vanity vanity;
+    protected final boolean glowing;
 
-    public VanityItem(Vanity vanity, Properties properties) {
-        super(vanity.material(), vanity.type(), properties);
+    public VanityItem(boolean glowing, Vanity vanity, Properties properties) {
+        super(VanityMaterial.SHARED, vanity.type(), properties);
         this.vanity = vanity;
+        this.glowing = glowing;
+    }
+
+    public boolean isVanityGlowing() {
+        return this.glowing;
     }
 
     public void appendModifiers(UUID uuid, BiConsumer<Attribute, AttributeModifier> consumer) {
         this.vanity.appendModifiers(uuid, consumer);
-    }
-
-    public VanityRenderer createVanityRenderer() {
-        return vanity.createRenderer();
     }
 
     @Override
@@ -78,7 +78,7 @@ public abstract class VanityItem extends ArmorItem implements GeoItem, DyeableLe
 
     static {
         FLAVOR = TooltipOptions.builder()
-                .withDefaultStyle(Style.EMPTY.withColor(ChatFormatting.GOLD).withItalic(true))
+                .withDefaultStyle(Style.EMPTY.withColor(ChatFormatting.LIGHT_PURPLE).withItalic(true))
                 .withMaxLineLength(32)
                 .build();
     }

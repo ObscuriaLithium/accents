@@ -18,8 +18,8 @@ public final class FabricVanityItem extends VanityItem {
 
     private final Supplier<Object> renderProvider = GeoItem.makeRenderer(this);
 
-    public FabricVanityItem(Vanity vanity, Properties properties) {
-        super(vanity, properties);
+    public FabricVanityItem(boolean glowing, Vanity vanity, Properties properties) {
+        super(glowing, vanity, properties);
     }
 
     @Override

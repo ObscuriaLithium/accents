@@ -15,7 +15,7 @@ public interface AccentsRecipeSerializers {
     Deferred<RecipeSerializer<?>, RecipeSerializer<SewingRecipe>> SEWING = register("sewing", () -> new SingleItemRecipe.Serializer<>(SewingRecipe::new));
 
     private static <T extends Recipe<?>> Deferred<RecipeSerializer<?>, RecipeSerializer<T>> register(String name, Supplier<RecipeSerializer<T>> supplier) {
-        return AccentsRegistries.REGISTRAR.register(Registries.RECIPE_SERIALIZER, Accents.key(name), supplier);
+        return AccentsRegistries.REGISTRAR.register(Registries.RECIPE_SERIALIZER, Accents.identifier(name), supplier);
     }
 
     static void init() {}

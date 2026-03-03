@@ -37,11 +37,16 @@ public final class AccentsClient {
                 AccentsItems.HERMES_BOOTS,
                 AccentsItems.BANDOLIER,
                 AccentsItems.CROWN,
-                AccentsItems.HORNS);
+                AccentsItems.HORNS,
+                AccentsItems.KING_MASK,
+                AccentsItems.WIDE_BRIM_HAT,
+                AccentsItems.TUNDRA_HOOD,
+                AccentsItems.SCARF,
+                AccentsItems.ITEM_SATCHEL);
     }
 
     private static int pickVanityColor(ItemStack stack, int layer) {
-        if (layer != 1) return -1;
+        if (layer != 0) return -1;
         return stack.getItem() instanceof DyeableLeatherItem item
                 ? item.getColor(stack)
                 : 0xFFFFFF;

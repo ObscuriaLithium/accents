@@ -5,5 +5,9 @@ import net.minecraft.world.item.Item;
 
 public interface IVanityProvider {
 
-    VanityItem create(Vanity vanity, Item.Properties properties);
+    VanityItem create(boolean glowing, Vanity vanity, Item.Properties properties);
+
+    default VanityItem create(Vanity vanity, Item.Properties properties) {
+        return create(false, vanity, properties);
+    }
 }

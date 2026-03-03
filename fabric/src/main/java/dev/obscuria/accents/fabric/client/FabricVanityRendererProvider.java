@@ -1,29 +1,30 @@
 package dev.obscuria.accents.fabric.client;
 
-import dev.obscuria.accents.client.renderer.VanityRenderer;
-import dev.obscuria.accents.content.item.VanityItem;
+import com.google.common.base.Suppliers;
+import dev.obscuria.accents.client.AutoVanityRenderer;
 import dev.obscuria.accents.fabric.content.FabricVanityItem;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.client.RenderProvider;
 
-public final class FabricVanityRendererProvider implements RenderProvider {
+import java.util.function.Supplier;
 
-    private final VanityItem item;
-    private @Nullable VanityRenderer renderer;
+public record FabricVanityRendererProvider(
+        Supplier<AutoVanityRenderer> renderer
+) implements RenderProvider {
 
-    public FabricVanityRendererProvider(FabricVanityItem item) {
-        this.item = item;
+    public FabricVanityRendererProvider(FabricVanityItem renderer) {
+        this(Suppliers.memoize(() -> new AutoVanityRenderer(renderer)));
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public HumanoidModel<LivingEntity> getHumanoidArmorModel(LivingEntity entity, ItemStack stack, EquipmentSlot slot, HumanoidModel<LivingEntity> original) {
-        if (this.renderer == null) this.renderer = item.createVanityRenderer();
-        this.renderer.prepForRender(entity, stack, slot, original);
-        return this.renderer;
+    public HumanoidModel<LivingEntity> getHumanoidArmorModel(
+            LivingEntity entity, ItemStack stack, EquipmentSlot slot,
+            HumanoidModel<LivingEntity> original) {
+        this.renderer.get().prepForRender(entity, stack, slot, original);
+        return this.renderer.get();
     }
 }

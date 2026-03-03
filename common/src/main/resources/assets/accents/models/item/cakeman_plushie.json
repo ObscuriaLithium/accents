@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "accents:item/cakeman_plushie",
-    "layer1": "accents:item/cakeman_plushie_overlay"
+    "layer0": "accents:item/cakeman_plushie_dyeable",
+    "layer1": "accents:item/cakeman_plushie"
   }
 }
